@@ -16,19 +16,55 @@ public void setup()
 }
 public boolean palindrome(String word)
 {
-  String cheese = new String();
-  for (int a = 1; a < word.length()+1; a++)
-    cheese = cheese + word.substring(word.length()-a,word.length()-a+1);
-    if (cheese.equals(word))
+
+  String cheese = noSpaces(word);
+  cheese = cheese.toLowerCase();
+  cheese = noPunctuation(cheese);
+    if (cheese.equals(reverse(cheese)))
       return true;
   return false;
+
+
+  
 }
+
 public String reverse(String str)
 {
     String sNew = new String();
-    for (int a = 1; a < str.length()+1; a++)
-      sNew = sNew + str.substring(str.length()-a,str.length()-a+1);
+    for (int b= 1; b < str.length()+1; b++)
+      sNew = sNew + str.substring(str.length()-b,str.length()-b+1);
     return sNew;
 }
+
+public String noSpaces(String sWord)
+{
+ String cheese = new String();
+  for (int i = 0; i < sWord.length(); i++)
+   if(sWord.substring(i,i+1).equals(" ") == false)
+    cheese = cheese + sWord.substring(i,i+1);
+  return cheese;
+}
+
+// public String noCapitals(String aWord)
+// {
+//   return aWord.toLowerCase();
+// }
+
+public String noPunctuation(String bWord)
+{
+  String rNew = new String();
+    for(int i = 0; i < bWord.length(); i++)
+        if(Character.isLetter(bWord.charAt(i)) == true)
+          rNew = rNew + bWord.charAt(i);
+  return rNew;
+}
+
+
+
+
+
+
+
+
 
 
